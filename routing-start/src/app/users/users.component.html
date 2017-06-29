@@ -1,0 +1,14 @@
+<div class="panel panel-defaul">
+  <div class="panel-body">
+    Here we are in the users section, there are some amazing users here!
+  </div>
+  <div class="list-group">
+    <div class="list-group-item" *ngFor="let user of users">
+      <h4 class="list-group-item-header">{{ user.username }}</h4>
+      <p class="list-group-item-text">{{ user.description }}</p>
+    </div>
+    <div class="list-group-item">
+      <a routerLink="">Back to home</a>
+    </div>
+  </div>
+</div>

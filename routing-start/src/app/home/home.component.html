@@ -1,0 +1,24 @@
+<div class="panel panel-defaul">
+  <div class="panel-body">
+    <p>Welcome to our amazing web page, this is the home component. Here we have a button that programmatically
+    routes the user to the users page.</p>
+    <p><button class="btn btn-primary" (click)="onNavigateToUsers()">Users</button></p>
+    <p>Here we also have a router link that has a static url</p>
+    <p><a routerLink="users">Users</a></p>
+    <p>Here we also have another router link where the url is more dynamic</p>
+
+    <!--
+      If you find this confusing, it's ok. What we do here is:
+        - we bind our url information to a property 'routerLink' of a directive with selector 'routerLink'
+        - we then bind to the queryParams property of the routerLink
+        - we then bind to the fragment property of the routerLink
+      Since this is an angular directive, we can't really influence this behavior, but to make it clearer we could think of it like this:
+
+         directive -> property                 property                         property
+      <a routerLink [routerLink]="['users']" [queryParams]="{username: 'max'}" [fragment]="'maxstop'">Max</a>
+
+      But because the selector and the property are identical in name, we can just bind it directly [routerLink]="..."
+    -->
+    <p><a [routerLink]="['users']" [queryParams]="{username: 'max'}" [fragment]="'maxstop'">Max</a></p>
+  </div>
+</div>

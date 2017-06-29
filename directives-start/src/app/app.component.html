@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">
+          Directives
+        </div>
+      </div>
+      <div class="panel-body">
+          Introduction to directives. Directives can be really complex, but they are basically 'components without a template'. 
+          Directives are designed to modify the DOM. There are 2 types of directives:
+          <ul>
+            <li><b>Attribute directives:</b> Modify the attributes of an element, for example <code>[ngStyle]</code> is an attribute directive that changes the 'style' of an HTML element</li>
+            <li><b>Structural directives:</b> Modify the actual DOM, for example <code>*ngFor</code> is a structural directive.</li>
+          </ul>
+          <mark>Important:</mark>
+            the * (asterisk) is angular syntax, the * just means that angular will create necessary templates and hooks so that it knows where this element
+            is/was or would be when the DOM is modified.
+        </div>
+        <div class="list-group">
+          <div class="list-group-item" hoverToggleClass>
+            <h5 class="list-group-item-header">Hover to toggle class</h5>
+            <p class="list-group-item-text">The class of this element changes when you hover over this element TODO</p>
+          </div>
+          <div class="list-group-item" hoverChangeText>
+            <h5 class="list-group-item-header">Hover to change text</h5>
+            <p class="list-group-item-text">Following text will change when you hover over this element:<br>{{ text }} TODO:</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

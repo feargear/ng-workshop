@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">Data binding</div>
+      </div>
+      <div class="panel-body">
+        Introduction to data binding. Data binding is an important part of the angular application. It allows really dynamic flow of data.
+      </div>
+        <div class="list-group">
+          <div class="list-group-item">
+            <h5 class="list-group-item-header">String interpolation</h5>
+            <p class="list-group-item-text">The value '{{ property1 }}' is bound to a variable in the typescript file</p>
+          </div>
+          <div class="list-group-item">
+            <h5 class="list-group-item-header">Property binding</h5>
+            <p class="list-group-item-text">The 'href' property of this <a [href]="anchorRef">link</a> is bound to a variable in the typescript file</p>
+          </div>
+          <div class="list-group-item">
+            <h5 class="list-group-item-header">Event binding</h5>
+            <p class="list-group-item-text">The 'click' event of this <button class="btn btn-primary" (click)="onClickButton()">Button</button> is bound to a function in the typescript file</p>
+          </div>
+          <!-- Button above toggles this, ngIf is a structural directive, more about directives later -->
+          <div class="list-group-item" *ngIf="showStuff">
+            <h5 class="list-group-item-header">Surprise!</h5>
+            <p class="list-group-item-text">The visibility of this item is controlled by a boolean 'showStuff' in the typescript file</p>
+          </div>
+          <div class="list-group-item">
+            <h5 class="list-group-item-header">Two way binding</h5>
+            <p class="list-group-item-text">It is possible to bind both ways, this can be useful with input fields. Two way binding basically listens to
+              the key presses and updates the underlying property when typing and at the same time binds it back to the input field.
+            </p>
+          </div>
+          <!-- ngModel is a special directive, more about directives later -->
+          <div class="list-group-item">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Username" [(ngModel)]="inputValue">
+                </div>
+              </div>
+              <div class="col-md-6"><b>{{ inputValue }}</b></div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

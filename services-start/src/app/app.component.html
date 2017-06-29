@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">
+          Services
+        </div>
+      </div>
+      <div class="panel-body">
+        Services can be really powerful in angular apps. Services help communicate between components and external services, a REST API for example.
+      </div>
+        <div class="row" *ngIf="!isLoggedIn">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="panel-title">
+                  Login
+                </div>
+              </div>
+              <div class="panel-body">
+                <p>This login form uses the AuthService for authentication. This is just an example and not a good implementation. See that anything else but test/test won't let you in. The AuthService also injects a LogService to itself and for that it needs the <code>Injectable()</code> decorator. Which means that the service can be <b>injected to</b>.</p>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" placeholder="username" [(ngModel)]="username">
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Password</label>
+                    <input type="password" class="form-control" placeholder="password" [(ngModel)]="password">
+                  </div>
+                  <button class="btn btn-primary" (click)="onAuthenticate()">Login</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="isLoggedIn">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="panel-title">
+                  Logged in
+                </div>
+              </div>
+              <div class="panel-body">
+                <p>Now logged in!</p>
+                <button class="btn btn-primary" (click)="onLogout()">Logout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
