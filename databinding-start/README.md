@@ -1,28 +1,35 @@
-# DatabindingStart
+# Data binding
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+In angular we often want to bind certain things from the template to something in the typescript class. You can see data binding
+in almost all angular apps and it's very useful. There are few different ways to 'bind' data to the code from the template.
 
-## Development server
+## String interpolation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+String interpolation is one-way binding from the data source to the template.
 
-## Code scaffolding
+String interpolation is depicted with double curly braces <code>{{ expression }}</code>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+Template expressions are very similar to javascript expressions, but some javascript operations can't be used.
 
-## Build
+When using string interpolation, angular first evaluates the expression inside and produces a string for the template.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Property binding
 
-## Running unit tests
+Property binding is also one-way binding from the data source to the template.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Property binding is depicted with the square brackets and assignment <code>[target]='expression'</code> or the canonical form: <code>bind-target='expression'</code>.
 
-## Running end-to-end tests
+Example: set the src property of an image DOM object
+```html
+<img [src]='expression' />
+<!-- Or -->
+<img bind-src='expression' />
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+When should I use property binding instead of string interpolation? When setting a non-string target property. Example:
+```html
+<!-- this does not work if animal is not a string -->
+<app-animal animal='{{ animal }}'></app-animal>
+<!-- this is the right way, assuming the animal in the expression is defined somewhere -->
+<app-animal [animal]='animal'></animal>
+```
