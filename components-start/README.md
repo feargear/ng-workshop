@@ -1,28 +1,66 @@
-# ComponentsStart
+# Components
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+Components are the most basic building blocks of Angular apps.
 
-## Development server
+Components must provide some metadata with the <code>@Component()</code> decorator.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```typescript
+import { Component } from '@angular/core';
 
-## Code scaffolding
+@Component({
+  selector: 'app-example', // CSS selector, can be attribute, element, class selector, etc...
+  templateUrl: './example.component.html', // Either templateUrl or template has to be present
+  styleUrls: ['./example.component.css'] // Optional
+})
+export class ExampleComponent {
+}
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+You can then use this component in the html
+```html
+<app-example></app-example>
+<!-- Or if selector is an attribute [app-example] selector -->
+<div app-example></div>
+<!-- Or a class .app-example selector... -->
+<div class="app-example"></div>
+```
 
-## Build
+Components have to be declared within an angular module decorator <code>NgModule()</code> before they can be used in a project. Declaring the component 
+here is enough, developers can then use the component anywhere in the module. So if we declare ListComponent, HomeComponent and EditComponent for example,
+we can use all of them from within each other if we wanted to.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```typescript
+@NgModule({
+  declarations: [
+    ExampleComponent // Declare that our component can be used within this module
+  ],
+  imports: [
+    BrowserModule // More about these later
+  ],
+  providers: [], // More about these later
+})
+export class ExampleModule { }
+```
 
-## Running unit tests
+Components can and should be nested within each other, so developers should look to build structures like this (example taken from a udemy angular course):
+- AppComponent
+  - RecipesComponent
+    - RecipeListComponent
+      - RecipeListItemComponent
+    - RecipeDetailComponent
+    - RecipeEditComponent
+  - ShoppingListComponent
+    - ShoppingListEditComponent
+    - ShoppingListItemComponent
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Components are generally named componentname.component.html/*.ts/*.css. Angular cli does this for us if we use it to generate our components, for example: <code>ng generate component new</code> will generate a component named NewComponent in the app root folder. It will also do all the necessary
+declarations and imports so that the component works right away.
 
-## Running end-to-end tests
+Components make angular apps really modular, so in the end your <code>app.component.html</code> might look something like this:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```html
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<router-outlet></router-outlet> <!-- Not important right now -->
+<app-footer></app-footer>
+```
