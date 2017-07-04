@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="panel-title">
+          Forms
+        </div>
+      </div>
+      <div class="panel-body">
+          Forms are a really big part of web applications, here are some forms made with angular.
+        </div>
+        <div class="list-group">
+          <div class="list-group-item">
+            <h5 class="list-group-item-header">Sign in</h5>
+            <!-- To register a form with angular, we need to bind to the ngSubmit directive -->
+            <!-- Typically when using template approach here, we create a local reference
+                 to the 'ngForm' object our 'ngSubmit' directive exposes. We can then access
+                 this object from anywhere in this page -->
+
+            <!-- This might be a bit confusing, but the ngForm is a typescript representation
+                 of our form. -->
+
+            <form (ngSubmit)="onSubmit()" #formObject="ngForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <!-- If we have to, we can do the same thing with inputs, we can make a reference 
+                         to the 'ngModel' property of our ngModel directive -->
+                    <input type="text" class="form-control" placeholder="username" name="username" required ngModel #username="ngModel">
+                    <!-- We can then do something like this -->
+                    <span class="help-block" *ngIf="!username.valid && username.touched">Please enter a username!</span>
+                </div>
+                <button class="btn btn-default" type="button" (click)="suggestUsername()">Suggest username</button>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <!-- Note, 'name' is a required attribute when working with angular forms through template -->
+                    <input type="password" class="form-control" placeholder="password" name="password" required ngModel #password="ngModel">
+                </div>
+                <!-- We can also group controls together, this group now has similar attributes 
+                     than our individual controls and the form itself, so we could check if this
+                     is valid or not -->
+                <div class="form-group" ngModelGroup="secQuestion">
+                    <label for="securityQuestion">Security question</label>
+                    <!-- We can also to the ngModel with property binding [] to set a default value -->
+                    <select name="securityQuestion" [ngModel]="defaultQuestion" class="form-control">
+                        <option value="child">Were you an angry child?</option>
+                        <option value="dinosaur">Did you have any pet dinosaurs?</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <!-- We can also use 2 way binding if we want to immediately react to stuff -->
+                    <textarea name="answer" rows="3" [(ngModel)]="answer" class="form-control" required></textarea>
+                    <span class="help-block">Your answer: {{ answer }}</span>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio" *ngFor="let g of genders">
+                        <label>
+                            <!-- Set default to the first gender available -->
+                            <input type="radio" name="gender" [ngModel]="genders[0]" [value]="g">{{g}}
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+          </div>
+          <div class="list-group-item" *ngIf="submitted">
+            <h5 class="list-group-item-header">Your data</h5>
+            <p>Username: {{user.username}}</p>
+            <p>Password: {{user.password}}</p>
+            <p>Security question: {{user.securityQuestion}}</p>
+            <p>Answer: {{user.answer}}</p>
+            <p>Gender: {{user.gender}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
