@@ -55,12 +55,19 @@ We can also use this syntax in our own components
 ```html
 <app-example (someEvent)="doSomethingHere($event)"></app-example>
 ```
+Note that event binding requires that the event property that is accessed has a special decorator <code>@Output(?alias:string)</code>
+```typescript
+@Output() someEvent = new EventEmitter<void>
+// Or if we want to bind to an alias, we can use
+@Output('myEvent') someEvent = new EventEmitter<void>
+``` 
+
 Now the component that contains this app-example component can react when app-example emits an event through an EventEmitter called 'someEvent'. Events
 can include a data object $event that can be accessed after the event has been caught.
 
 ## Two-way binding
 
-Two way binding is depicted with the **banana box** syntax <code>[(target)]="someProperty"</code>. Where the square brackets represent a property bind, and the round brackets represent an event bind. The canonical way for this syntax is <code>onbind-target="someProperty"</code>.
+Two way binding is depicted with the **banana box** syntax <code>[(target)]="someProperty"</code>. Where the square brackets represent a property bind, and the round brackets represent an event bind. The canonical way for this syntax is <code>bindon-target="someProperty"</code>.
 
 When using two-way binding angular does something special behind the scenes. It binds to the target property normally through property binding, but
 it also binds to an EventEmitter called targetChange.
