@@ -1,0 +1,8 @@
+<div class="list-group-item" *ngIf="user!=null">
+  <h4 class="list-group-item-header">{{ user.username }}</h4>
+  <p class="list-group-item-text">{{ user.description }}</p>
+</div>
+<div class="list-group-item" *ngIf="user==null">
+  <h4 class="list-group-item-header">No user selected</h4>
+  <p class="list-group-item-text">Select a user to display it here</p>
+</div>

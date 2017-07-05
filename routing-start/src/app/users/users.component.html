@@ -3,12 +3,12 @@
     Here we are in the users section, there are some amazing users here!
   </div>
   <div class="list-group">
-    <div class="list-group-item" *ngFor="let user of users">
+    <a class="list-group-item" *ngFor="let user of users; let i = index" [routerLink]="[i]" routerLinkActive="active">
       <h4 class="list-group-item-header">{{ user.username }}</h4>
-      <p class="list-group-item-text">{{ user.description }}</p>
-    </div>
+    </a>
     <div class="list-group-item">
       <a routerLink="">Back to home</a>
     </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

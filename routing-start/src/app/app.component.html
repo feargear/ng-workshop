@@ -7,9 +7,8 @@
         </div>
       </div>
       <div class="panel-body">
-        <p>Here we have 2 components. These components are controlled by a <code>router-outlet</code>. For simplicity's sake we only
-        have 1 router-outlet, but it is possible to have multiple router-outlets if we want to route nested url's, for example: <samp>/users</samp> and a child route <samp>/users/max</samp>.</p>
-        <p>For more information about the logic behind the routing, see <code>app.module.ts</code> file.</p>
+        <p>Here we have 2 components. These components are controlled by a <code>router-outlet</code>. There is also an outlet inside of the
+        <code>users.component</code> this child outlet controls what we show if we have a dynamic :id after our /users path.
         <router-outlet></router-outlet>
       </div>
     </div>
